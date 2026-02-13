@@ -17,9 +17,9 @@ Working on scalable backend systems, airline distribution integrations (NDC) ✈
 
 ## GitHub Stats 📊
 
-![Stats](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=verteil-sdd)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=verteil-sdd&show_icons=true&include_all_commits=true&count_private=true&cache_seconds=0)
 
-![Top Languages](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=verteil-sdd)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=verteil-sdd&layout=compact&count_private=true&cache_seconds=0)
 
 ---
 
