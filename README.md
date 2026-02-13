@@ -11,14 +11,15 @@ Working on scalable backend systems, airline distribution integrations (NDC) ✈
 ---
 
 ## Tech Stack 🛠
-![My Skills](https://skillicons.dev/icons?i=java,spring,postgres,neo4j,aws,docker,git)
+![My Skills](https://skillicons.dev/icons?i=java,spring,postgres,aws,docker,git)
 
 ---
 
 ## GitHub Stats 📊
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=verteil-sdd&show_icons=true&hide_border=true)
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=verteil-sdd&layout=compact&hide_border=true)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=verteil-sdd&show_icons=true&theme=default&cache_seconds=1800)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=verteil-sdd&layout=compact&theme=default&cache_seconds=1800)
 
 ---
 
