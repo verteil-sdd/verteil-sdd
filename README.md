@@ -13,10 +13,4 @@ Working on scalable backend systems, airline distribution integrations (NDC) ✈
 ## Tech Stack 🛠
 ![My Skills](https://skillicons.dev/icons?i=java,spring,postgres,aws,docker,git)
 
----
 
-## 🔥 GitHub Activity
-
-![My GitHub Game](game.gif)
-
----
