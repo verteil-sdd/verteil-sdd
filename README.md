@@ -17,6 +17,6 @@ Working on scalable backend systems, airline distribution integrations (NDC) ✈
 
 ## 🔥 GitHub Activity
 
-![snake gif](https://github.com/verteil-sdd/verteil-sdd/blob/output/github-contribution-grid-snake-dark.svg)
+![Snake animation](https://raw.githubusercontent.com/verteil-sdd/verteil-sdd/output/github-contribution-grid-snake.svg)
 
 ---
