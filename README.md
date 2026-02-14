@@ -17,8 +17,6 @@ Working on scalable backend systems, airline distribution integrations (NDC) ✈
 
 ## 🔥 GitHub Activity
 
-[![GitHub Streak](https://streak-stats.demolab.com?user=verteil-sdd&theme=github-dark-green&hide_border=true)](https://git.io/streak-stats)
-
 ![snake gif](https://github.com/verteil-sdd/verteil-sdd/blob/output/github-contribution-grid-snake-dark.svg)
 
 ---
