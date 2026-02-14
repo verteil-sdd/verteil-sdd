@@ -2,50 +2,71 @@ const fs = require("fs");
 const path = require("path");
 
 const width = 820;
-const height = 150;
+const height = 180;
 const rows = 7;
 const cols = 50;
-const size = 12; // box size
-const gap = 3;   // gap between boxes
+const size = 10; 
+const gap = 3;   
+const totalDuration = 20; 
 
-// 1. Generate the Grid
+// GitHub Dark Colors & Pink Gradient Palette
+const gridColors = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"];
+const pinkSegments = ["#ff007f", "#ff3399", "#ff66b2", "#ff99cc", "#ffcce6", "#ffe6f2"];
+
+// 1. Generate Randomized Grid with "Eating" Logic
 let gridDots = "";
 for (let c = 0; c < cols; c++) {
   for (let r = 0; r < rows; r++) {
     const x = 20 + c * (size + gap);
     const y = 20 + r * (size + gap);
     
-    // Background (Empty squares)
+    // Randomize initial color
+    const randomValue = Math.random();
+    let color = gridColors[0];
+    if (randomValue > 0.4) color = gridColors[Math.floor(Math.random() * 4) + 1];
+
+    // Background (the "eaten" state)
     gridDots += `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="2" fill="#161b22" />`;
     
-    // Foreground (Green squares that fade out)
-    // The delay is calculated so they disappear as the snake passes
-    const delay = (c * 0.4); 
-    gridDots += `
-      <rect x="${x}" y="${y}" width="${size}" height="${size}" rx="2" fill="#39d353">
-        <animate attributeName="opacity" values="1;1;0;0" dur="20s" 
-          begin="${delay}s" repeatCount="indefinite" />
-      </rect>`;
+    // Foreground (the "to be eaten" state)
+    // Zig-zag timing: even rows go L->R, odd rows go R->L
+    const isEvenRow = r % 2 === 0;
+    const progress = isEvenRow ? (c / cols) : ((cols - c) / cols);
+    const rowStartTime = (r / rows) * totalDuration;
+    const finalDelay = rowStartTime + (progress * (totalDuration / rows));
+
+    if (color !== gridColors[0]) {
+      gridDots += `
+        <rect x="${x}" y="${y}" width="${size}" height="${size}" rx="2" fill="${color}">
+          <animate attributeName="opacity" values="1;1;0;0;1" dur="${totalDuration}s" 
+            begin="${finalDelay}s" repeatCount="indefinite" />
+        </rect>`;
+    }
   }
 }
 
-// 2. Create the Snake Path (Zig-Zag)
-// M = Start, H = Horizontal, V = Vertical
-const pathLine = "M 20 20 H 770 V 35 H 20 V 50 H 770 V 65 H 20 V 80 H 770 V 95 H 20 V 110 H 770";
+// 2. Snake Path (Zig-Zag)
+const pathLine = "M 20 20 H 660 V 33 H 20 V 46 H 660 V 59 H 20 V 72 H 660 V 85 H 20 V 98 H 660";
 
-// 3. Create Snake Body (Head + 4 segments)
+// 3. Pink Gradient Snake Body
 let snakeBody = "";
-const segments = 5;
-for (let i = 0; i < segments; i++) {
-  const isHead = i === 0;
+const maxSegments = 8; 
+for (let i = 0; i < maxSegments; i++) {
+  // Head is pinkest (index 0), Tail is lightest
+  const segmentColor = pinkSegments[i] || pinkSegments[pinkSegments.length - 1];
+  
+  // Growth Logic: We use "scale" to make the tail appear as the snake moves
+  // and "opacity" to hide segments at the very start of the loop
   snakeBody += `
-    <rect width="${size}" height="${size}" rx="2" fill="${isHead ? '#ffffff' : '#fbbf24'}">
+    <rect width="${size}" height="${size}" rx="2" fill="${segmentColor}">
       <animateMotion 
-        dur="20s" 
+        dur="${totalDuration}s" 
         repeatCount="indefinite" 
-        begin="${i * 0.1}s"
+        begin="${i * 0.08}s"
         path="${pathLine}" 
       />
+      <animate attributeName="width" values="0;${size};${size}" dur="${totalDuration}s" 
+        begin="0s" repeatCount="indefinite" />
     </rect>`;
 }
 
@@ -61,4 +82,4 @@ const distDir = path.join(__dirname, "dist");
 if (!fs.existsSync(distDir)) fs.mkdirSync(distDir);
 fs.writeFileSync(path.join(distDir, "github-contribution-grid-snake.svg"), svg);
 
-console.log("✅ Snake SVG generated in /dist");
+console.log("✅ Pink Gradient Snake with Growth Logic generated!");
